@@ -33,7 +33,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         homeViewModel.viewStateLiveData.observe(this) { result ->
             when (result) {
                 is ViewState.Success -> {
-
+                    val res = result
+                    val art = ""
                 }
                 is ViewState.Error -> {
 
