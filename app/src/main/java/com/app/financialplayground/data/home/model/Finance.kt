@@ -11,7 +11,7 @@ data class Finance(
     @SerializedName("from_cache")
     val fromCache: Boolean?,
     @SerializedName("results")
-    val results: Results?,
+    val results: Results,
     @SerializedName("valid_key")
     val validKey: Boolean?
 )

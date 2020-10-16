@@ -4,11 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import com.app.financialplayground.R
 import com.app.financialplayground.core.base.BaseFragment
+import com.app.financialplayground.data.ViewState
 import com.app.financialplayground.databinding.FragmentHomeBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -26,8 +24,24 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         return binding.root
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        homeViewModel.fetchFinances()
+    }
+
     override fun subscribeUi() {
-        homeViewModel.items.observe(this, {
-        })
+        homeViewModel.viewStateLiveData.observe(this) { result ->
+            when (result) {
+                is ViewState.Success -> {
+
+                }
+                is ViewState.Error -> {
+
+                }
+                is ViewState.Loading -> {
+
+                }
+            }
+        }
     }
 }
