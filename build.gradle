@@ -28,6 +28,8 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
+apply from: file('gradle/projectDependencyGraph.gradle')
+
 // Define versions in a single place
 ext {
     // App dependencies
